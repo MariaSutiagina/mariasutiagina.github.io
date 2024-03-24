@@ -58,11 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
         {min: 91, color: '#FF0000'}, // Red for 91+ years
     ];
 
-    // добавляем слой с границей городского округа Орехово-Зуево
+    // добавляем слой с границей городского округа Орехово-Зуево и городов
     d3.json('assets/oz-okrug.json').then(function(geojsonData) {
         L.geoJson(geojsonData, {
             style: function (feature) {
-                return {color: "#666", weight: 4, opacity: 0.65};
+                if (feature.properties.feature_id == 0) {
+                    return {color: "#060", weight: 4, opacity: 0.25};
+                } else {
+                    return {color: "#007", weight: 2, opacity: 0.35};
+                }
             }
         }).addTo(map);
     });
