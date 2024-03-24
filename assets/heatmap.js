@@ -1,15 +1,16 @@
 // функция, определяющая цвет точки с домом в зависимости от возраста дома
 function getColor(age) {
-    return age > 100 ? '#800026' : // dark red
-           age > 90  ? '#BD0026' : // less dark red
-           age > 80  ? '#E31A1C' : // red
-           age > 70  ? '#FC4E2A' : // tomato red
-           age > 60  ? '#FD8D3C' : // dark orange
-           age > 50  ? '#FEB24C' : // orange
-           age > 40  ? '#FED976' : // light orange
-           age > 30  ? '#FFEDA0' : // very light orange
-           age > 20  ? '#FFFFCC' : // almost white
-                       '#31a354';   // green
+    return age > 100 ? '#FF0000' : // dark red
+           age > 90  ? '#FE7777' : // less dark red
+           age > 80  ? '#FE5A00' : // red
+           age > 70  ? '#FC9100' : // tomato red
+           age > 60  ? '#FCC800' : // dark orange
+           age > 50  ? '#FCFC00' : // orange
+           age > 40  ? '#C8C8FF' : // light orange
+           age > 30  ? '#9696FF' : // very light orange
+           age > 20  ? '#6464FF' : // 
+           age > 10  ? '#3232FF' : // 
+                       '#0000FF';   // 
 }
 
 // параметры посика по адресу
@@ -51,11 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         {min: 21, max: 30, color: '#6464FF'},
         {min: 31, max: 40, color: '#9696FF'},
         {min: 41, max: 50, color: '#C8C8FF'}, // Light Blue
-        {min: 51, max: 60, color: '#FFFF00'}, // Yellow
-        {min: 61, max: 70, color: '#FFC800'},
-        {min: 71, max: 80, color: '#FF9100'},
-        {min: 81, max: 90, color: '#FF5A00'},
-        {min: 91, color: '#FF0000'}, // Red for 91+ years
+        {min: 51, max: 60, color: '#FCFC00'}, // Yellow
+        {min: 61, max: 70, color: '#FCC800'},
+        {min: 71, max: 80, color: '#FC9100'},
+        {min: 81, max: 90, color: '#FE5A00'},
+        {min: 91, max: 100, color: '#FE7777'},
+        {min: 101, color: '#FF0000'}, // Red for 91+ years
     ];
 
     // добавляем слой с границей городского округа Орехово-Зуево и городов
@@ -140,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 to = grades[i + 1];
 
                 labels.push(
-                    '<i style="background:' + ageCategories[i].color + '"></i> ' +
-                    from + (to ? '&ndash;' + to : '+'));
+                    '<i style="background:' + ageCategories[i].color + '">' +
+                    from + (to ? '&ndash;' + to : '+') + '</i>' );
             }
 
             div.innerHTML = labels.join('<br>'); // добавляем тэги в div
